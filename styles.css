@@ -900,3 +900,44 @@ body::before {
     display: none;
   }
 }
+
+.folder-tab {
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    padding 0.2s ease;
+}
+
+.folder-tab:hover {
+  filter: brightness(0.94);
+  box-shadow: 0 -3px 0 rgba(18, 18, 18, 0.08) inset;
+}
+
+.folder-tab.active {
+  filter: brightness(0.9);
+  transform: translateY(2px);
+}
+
+.folder-system[data-active-category="all"] .folder-body {
+  background: linear-gradient(180deg, var(--soft-rose), var(--blush));
+}
+
+.folder-system[data-active-category="wordpress"] .folder-body {
+  background: linear-gradient(180deg, var(--blush), var(--soft-cream));
+}
+
+.folder-system[data-active-category="forms"] .folder-body {
+  background: linear-gradient(180deg, var(--periwinkle), var(--soft-periwinkle));
+}
+
+.folder-system[data-active-category="javascript"] .folder-body {
+  background: linear-gradient(180deg, var(--light-gray), var(--soft-cream));
+}
+
+.folder-system[data-active-category="css"] .folder-body {
+  background: linear-gradient(180deg, var(--rose), var(--soft-rose));
+}
+
+.folder-system[data-active-category="qa"] .folder-body {
+  background: linear-gradient(180deg, var(--soft-periwinkle), var(--light-gray));
+}

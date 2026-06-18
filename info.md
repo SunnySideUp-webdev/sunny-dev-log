@@ -17,6 +17,16 @@ Buscar comillas raras.
 Reemplazar manualmente.
 Probar de nuevo en WordPress.
 
+
+**GIT**
+
+Ahora cada vez que hagas cambios:
+
+git status
+git add .
+git commit -m "Update dev log notes"
+git push
+
 **AGREGAR UNA NOTA NUEVA**
 
 <article class="dev-note note-rose">

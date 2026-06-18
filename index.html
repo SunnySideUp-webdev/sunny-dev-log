@@ -90,7 +90,7 @@
         - Board de notas.
       =========================================================
       -->
-      <section class="folder-system">
+      <section class="folder-system" data-active-category="all">
         <!--
         =========================================================
           4.1 PESTAÑAS DE CATEGORÍAS
@@ -101,12 +101,12 @@
         =========================================================
         -->
         <nav class="folder-tabs" aria-label="Dev log categories">
-          <button class="folder-tab active">All</button>
-          <button class="folder-tab">WP</button>
-          <button class="folder-tab">Forms</button>
-          <button class="folder-tab">JS</button>
-          <button class="folder-tab">CSS</button>
-          <button class="folder-tab">QA</button>
+          <button class="folder-tab active" data-category="all">All</button>
+          <button class="folder-tab" data-category="wordpress">WP</button>
+          <button class="folder-tab" data-category="forms">Forms</button>
+          <button class="folder-tab" data-category="javascript">JS</button>
+          <button class="folder-tab" data-category="css">CSS</button>
+          <button class="folder-tab" data-category="qa">QA</button>
         </nav>
 
         <!--
@@ -412,6 +412,7 @@
         </div>
       </section>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
 ```
