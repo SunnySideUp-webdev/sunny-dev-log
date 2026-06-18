@@ -1044,14 +1044,17 @@ body::before {
   .folder-tabs {
     display: flex;
     align-items: flex-end;
-    flex-wrap: nowrap;
-    width: calc(100% - 45px);
-    max-width: calc(100% - 45px);
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 18px;
     gap: 6px;
     overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
   }
 
   .folder-tabs::-webkit-scrollbar {
@@ -1059,15 +1062,20 @@ body::before {
   }
 
   .folder-tab {
-    flex: 0 0 auto;
+    flex: 0 0 clamp(68px, 22vw, 112px);
     width: auto;
-    min-width: 72px;
+    min-width: 0;
     max-width: none;
-    padding: 10px 14px 11px;
+    padding: 10px 8px 11px;
     border-radius: 14px 14px 0 0;
-    font-size: 0.6rem;
-    overflow: visible;
-    text-overflow: initial;
+    font-size: 0.58rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+    touch-action: pan-x;
   }
 
   .folder-tab.active {
@@ -1336,16 +1344,16 @@ body::before {
   }
 
   .folder-tabs {
-    width: calc(100% - 38px);
-    max-width: calc(100% - 38px);
-    margin: 0 auto;
-    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 16px;
+    gap: 5px;
   }
 
   .folder-tab {
-    min-width: 68px;
-    padding: 9px 12px 10px;
-    font-size: 0.58rem;
+    flex-basis: clamp(64px, 24vw, 96px);
+    padding: 9px 6px 10px;
+    font-size: 0.54rem;
   }
 
   .folder-body {
@@ -1387,6 +1395,7 @@ body::before {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
   touch-action: pan-x;
+  -webkit-user-drag: none;
 }
 
 .folder-tab {
@@ -1395,17 +1404,5 @@ body::before {
   -webkit-touch-callout: none;
   -webkit-user-drag: none;
   touch-action: pan-x;
-}
-
-.folder-tabs {
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-}
-
-.folder-tab {
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
 }
