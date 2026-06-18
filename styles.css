@@ -611,7 +611,8 @@ body::before {
 }
 
 .empty-note::before {
-  display: none;
+  content: none !important;
+  display: none !important;
 }
 
 .empty-note h3 {
