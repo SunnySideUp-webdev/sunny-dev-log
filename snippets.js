@@ -21,5 +21,12 @@ const snippets = [
     language: "JavaScript",
     code: `element.classList.add("active");`,
     description: "Useful when I need to visually mark a selected tab, button or card."
-  }
+  },
+  {
+  id: "004",
+  title: "Temporary test snippet",
+  language: "JavaScript",
+  code: `console.log("testing pagination");`,
+  description: "Temporary snippet to test pagination."
+}
 ];

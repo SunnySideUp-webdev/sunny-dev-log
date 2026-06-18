@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="en">
 
@@ -221,12 +220,44 @@
           =========================================================
           -->
         <div class="snippet-header">
-          <h2>Little code pieces I want to reuse.</h2>
-          <p>
-            Small snippets, selectors and patterns that can help me solve
-            similar problems faster.
-          </p>
-        </div>
+  <h2>Little code pieces I want to reuse.</h2>
+
+  <div class="snippet-copy">
+    <div class="snippet-search-wrapper">
+      <button class="snippet-search-toggle" id="snippetSearchToggle" type="button">
+        🔍
+      </button>
+
+      <input
+        type="search"
+        class="snippet-search"
+        id="snippetSearch"
+        placeholder="Search snippets..."
+      />
+    </div>
+
+    <p>
+      Small snippets, selectors and patterns that can help me solve
+      similar problems faster.
+    </p>
+  </div>
+</div>
+
+<div class="snippets-list" aria-label="Reusable code snippets"></div>
+
+<div class="snippets-pagination">
+  <button class="snippet-pagination-btn" id="prevSnippetPage">
+    ← previous
+  </button>
+
+  <span class="snippet-pagination-info" id="snippetPaginationInfo">
+    Page 1 of 1
+  </span>
+
+  <button class="snippet-pagination-btn" id="nextSnippetPage">
+    next →
+  </button>
+</div>
 
         <!--
           =========================================================
@@ -257,4 +288,3 @@
 </body>
 
 </html>
-```

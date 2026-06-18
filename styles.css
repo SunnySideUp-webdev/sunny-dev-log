@@ -786,6 +786,18 @@ body::before {
   margin-bottom: 28px;
 }
 
+.snippet-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.snippet-copy p {
+  margin: 0;
+  color: var(--dark-gray);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
 .snippet-header h2 {
   margin: 8px 0 0;
   font-family: Georgia, serif;
@@ -801,9 +813,112 @@ body::before {
   line-height: 1.7;
 }
 
+.snippet-search-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  border: 2px solid var(--black);
+  border-radius: 999px;
+  background: var(--soft-cream);
+  box-shadow: 4px 4px 0 rgba(18, 18, 18, 0.14);
+  overflow: hidden;
+  transition: width 0.25s ease;
+}
+
+.snippet-search-toggle {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  color: var(--black);
+  font-size: 1rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.snippet-search {
+  width: 0;
+  padding: 0;
+  border: 0;
+  color: var(--black);
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: transparent;
+  outline: none;
+  opacity: 0;
+  transition:
+    width 0.25s ease,
+    padding 0.25s ease,
+    opacity 0.2s ease;
+}
+
+.snippet-search-wrapper.open .snippet-search,
+.snippet-search-wrapper:focus-within .snippet-search {
+  width: 230px;
+  padding: 0 14px 0 0;
+  opacity: 1;
+}
+
+.snippet-search::placeholder {
+  color: rgba(95, 93, 92, 0.68);
+}
+
 .snippets-list {
   display: grid;
   gap: 22px;
+}
+
+.snippets-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.snippet-pagination-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px 18px;
+  border: 2px solid var(--black);
+  border-radius: 999px;
+  color: var(--black);
+  font-family: "Courier New", monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  background: var(--soft-cream);
+  box-shadow: 4px 4px 0 rgba(18, 18, 18, 0.18);
+  cursor: pointer;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.snippet-pagination-btn:hover:not(:disabled) {
+  filter: brightness(0.96);
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 0 rgba(18, 18, 18, 0.2);
+}
+
+.snippet-pagination-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.snippet-pagination-info {
+  color: var(--dark-gray);
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 .snippet-paper {
@@ -1076,14 +1191,37 @@ body::before {
     margin-bottom: 20px;
   }
 
+  .snippet-copy {
+  gap: 14px;
+}
+
+.snippet-search-wrapper.open .snippet-search,
+.snippet-search-wrapper:focus-within .snippet-search {
+  width: 180px;
+}
+
+.snippets-pagination {
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.snippet-pagination-btn {
+  padding: 9px 13px;
+  font-size: 0.68rem;
+}
+
+.snippet-pagination-info {
+  font-size: 0.66rem;
+}
+
   .snippet-header h2 {
     font-size: clamp(1.8rem, 10vw, 2.7rem);
   }
 
-  .snippet-header p {
-    font-size: 0.8rem;
-    line-height: 1.65;
-  }
+  .snippet-copy p {
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
 
   .snippet-paper {
     padding: 18px;

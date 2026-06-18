@@ -9,12 +9,24 @@ const notesCounter = document.querySelector("#notesCounter");
 const notesSearch = document.querySelector("#notesSearch");
 const snippetsList = document.querySelector(".snippets-list");
 
+const snippetSearchWrapper = document.querySelector(".snippet-search-wrapper");
+const snippetSearchToggle = document.querySelector("#snippetSearchToggle");
+const snippetSearch = document.querySelector("#snippetSearch");
+
+const prevSnippetPageButton = document.querySelector("#prevSnippetPage");
+const nextSnippetPageButton = document.querySelector("#nextSnippetPage");
+const snippetPaginationInfo = document.querySelector("#snippetPaginationInfo");
+
 const noteColors = ["note-rose", "note-blush", "note-periwinkle", "note-cream"];
 
 const notesPerPage = 4;
 let currentPage = 1;
 let currentCategory = "all";
 let currentSearch = "";
+
+const snippetsPerPage = 3;
+let currentSnippetPage = 1;
+let currentSnippetSearch = "";
 
 function updateNotesCounter(totalNotes) {
   const noteWord = totalNotes === 1 ? "note" : "notes";
@@ -23,7 +35,53 @@ function updateNotesCounter(totalNotes) {
 }
 
 function renderSnippets() {
-  snippetsList.innerHTML = snippets
+  const filteredSnippets = snippets.filter((snippet) => {
+    const searchText = currentSnippetSearch.toLowerCase();
+
+    const snippetContent = `
+      ${snippet.title}
+      ${snippet.language}
+      ${snippet.code}
+      ${snippet.description}
+    `.toLowerCase();
+
+    return snippetContent.includes(searchText);
+  });
+
+  if (filteredSnippets.length === 0) {
+    snippetsList.innerHTML = `
+      <article class="snippet-paper">
+        <div class="snippet-paper-top">
+          <div>
+            <p>No snippets found</p>
+            <small>Try another word, language or selector.</small>
+          </div>
+
+          <span>Empty</span>
+        </div>
+
+        <pre><code>No matching snippets yet.</code></pre>
+      </article>
+    `;
+
+    snippetPaginationInfo.textContent = "Page 0 of 0";
+    prevSnippetPageButton.disabled = true;
+    nextSnippetPageButton.disabled = true;
+
+    return;
+  }
+
+  const totalSnippetPages = Math.ceil(filteredSnippets.length / snippetsPerPage);
+
+  if (currentSnippetPage > totalSnippetPages) {
+    currentSnippetPage = totalSnippetPages;
+  }
+
+  const startIndex = (currentSnippetPage - 1) * snippetsPerPage;
+  const endIndex = startIndex + snippetsPerPage;
+  const snippetsToShow = filteredSnippets.slice(startIndex, endIndex);
+
+  snippetsList.innerHTML = snippetsToShow
     .map((snippet) => {
       return `
         <article class="snippet-paper">
@@ -41,6 +99,11 @@ function renderSnippets() {
       `;
     })
     .join("");
+
+  snippetPaginationInfo.textContent = `Page ${currentSnippetPage} of ${totalSnippetPages}`;
+
+  prevSnippetPageButton.disabled = currentSnippetPage === 1;
+  nextSnippetPageButton.disabled = currentSnippetPage === totalSnippetPages;
 }
 
 function renderNotes(category = "all") {
@@ -175,6 +238,29 @@ notesSearch.addEventListener("input", () => {
   currentSearch = notesSearch.value;
   currentPage = 1;
   renderNotes(currentCategory);
+});
+
+snippetSearchToggle.addEventListener("click", () => {
+  snippetSearchWrapper.classList.toggle("open");
+  snippetSearch.focus();
+});
+
+snippetSearch.addEventListener("input", () => {
+  currentSnippetSearch = snippetSearch.value;
+  currentSnippetPage = 1;
+  renderSnippets();
+});
+
+prevSnippetPageButton.addEventListener("click", () => {
+  if (currentSnippetPage > 1) {
+    currentSnippetPage--;
+    renderSnippets();
+  }
+});
+
+nextSnippetPageButton.addEventListener("click", () => {
+  currentSnippetPage++;
+  renderSnippets();
 });
 
 renderNotes();
