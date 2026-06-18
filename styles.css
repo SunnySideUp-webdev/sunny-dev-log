@@ -1376,3 +1376,23 @@ body::before {
     display: none;
   }
 }
+
+/* =========================================================
+  MOBILE TABS TOUCH FIX
+  Evita que las pestañas se puedan seleccionar o arrastrar.
+  Solo permite deslizar horizontalmente el contenedor.
+========================================================= */
+
+.folder-tabs {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+}
+
+.folder-tab {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  touch-action: pan-x;
+}
