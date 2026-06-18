@@ -207,6 +207,20 @@ function renderNotes(category = "all") {
 }
 
 folderTabs.forEach((tab) => {
+  tab.setAttribute("draggable", "false");
+
+  tab.addEventListener("dragstart", (event) => {
+    event.preventDefault();
+  });
+
+  tab.addEventListener("selectstart", (event) => {
+    event.preventDefault();
+  });
+
+  tab.addEventListener("contextmenu", (event) => {
+    event.preventDefault();
+  });
+
   tab.addEventListener("click", () => {
     const selectedCategory = tab.dataset.category;
 

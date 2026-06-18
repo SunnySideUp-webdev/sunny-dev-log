@@ -1396,3 +1396,16 @@ body::before {
   -webkit-user-drag: none;
   touch-action: pan-x;
 }
+
+.folder-tabs {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+.folder-tab {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+}
