@@ -1,0 +1,902 @@
+/* =========================================================
+  SUNNY'S WEB DEV PORTFOLIO
+  Estilo: portafolio funcional + collage editorial
+  Paleta: gris, blanco papel, negro, rosado
+========================================================= */
+
+
+/* =========================================================
+  1. VARIABLES
+  Aqui guardamos colores, sombras y medidas que se repiten.
+========================================================= */
+
+:root {
+  --cream: #f7f1ec;
+  --soft-cream: #fffaf6;
+  --black: #121212;
+  --dark-gray: #5f5d5c;
+  --light-gray: #eeeeef;
+  --rose: #dc89aa;
+  --soft-rose: #f3c8d8;
+  --blush: #f8e4eb;
+  --pink-note: #e684a3;
+  --periwinkle: #c9cbdb;
+  --soft-periwinkle: #e4e5f0;
+  --paper-hole: #f1ece8;
+  --shadow-soft: rgba(18, 18, 18, 0.16);
+  --shadow-medium: rgba(18, 18, 18, 0.22);
+}
+
+
+/* =========================================================
+  2. RESET Y BASE
+  Reglas generales para que la pagina empiece limpia.
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--black);
+  font-family: "Courier New", monospace;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(220, 137, 170, 0.28), transparent 24%),
+    radial-gradient(circle at 88% 18%, rgba(201, 203, 219, 0.45), transparent 28%),
+    linear-gradient(135deg, var(--cream), #ffffff);
+}
+
+/* Capa de puntitos para dar textura de papel. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image: radial-gradient(rgba(18, 18, 18, 0.22) 1px, transparent 1px);
+  background-size: 18px 18px;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 84%, transparent);
+}
+
+
+/* =========================================================
+  3. FONDO DECORATIVO
+  Doodles flotantes que no afectan el contenido.
+========================================================= */
+
+.background-doodles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.doodle {
+  position: absolute;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  opacity: 0.55;
+}
+
+.doodle-star {
+  top: 8%;
+  right: 9%;
+  color: var(--black);
+  font-size: 3rem;
+  transform: rotate(12deg);
+}
+
+.doodle-sparkle {
+  top: 27%;
+  left: 7%;
+  color: var(--periwinkle);
+  font-size: 3.4rem;
+}
+
+.doodle-heart {
+  top: 38%;
+  right: 8%;
+  color: var(--rose);
+  font-size: 4rem;
+  transform: rotate(-10deg);
+}
+
+.doodle-loop {
+  bottom: 18%;
+  left: 6%;
+  color: var(--soft-rose);
+  font-size: 4.8rem;
+  transform: rotate(-18deg);
+}
+
+.doodle-plus {
+  right: 15%;
+  bottom: 12%;
+  color: var(--periwinkle);
+  font-size: 3.2rem;
+}
+
+.doodle-flower {
+  top: 62%;
+  right: 5%;
+  color: var(--rose);
+  font-size: 3.5rem;
+}
+
+
+/* =========================================================
+  4. LAYOUT PRINCIPAL
+  Contenedor que centra todo el contenido visible.
+========================================================= */
+
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  width: min(1080px, 92%);
+  margin: 0 auto;
+  padding: 56px 0 72px;
+}
+
+
+/* =========================================================
+  5. HERO
+  Encabezado principal con titulo, etiqueta y descripcion.
+========================================================= */
+
+.site-hero {
+  margin-bottom: 54px;
+}
+
+.hero-label,
+.section-label,
+.case-number {
+  margin: 0;
+  color: var(--dark-gray);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.main-title {
+  position: relative;
+  width: fit-content;
+  margin: 8px 0 16px;
+  font-family: Georgia, serif;
+  font-size: clamp(4rem, 11vw, 8.5rem);
+  line-height: 0.78;
+  letter-spacing: -0.08em;
+  text-transform: lowercase;
+}
+
+/* Cada palabra del titulo baja a su propia linea. */
+.main-title span {
+  display: block;
+}
+
+/* Etiqueta rosada pegada al titulo. */
+.main-title::after {
+  content: "sunny consuegra";
+  position: absolute;
+  top: 50%;
+  right: -78px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  color: white;
+  font-family: "Courier New", monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0;
+  background: var(--soft-rose);
+  box-shadow: 4px 4px 0 var(--black);
+  transform: translateY(-50%) rotate(-2deg);
+}
+
+.hero-description {
+  max-width: 540px;
+  margin: 0;
+  color: var(--dark-gray);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+  6. SISTEMA DE CARPETA
+  Contiene las pestanas, el bloque de enfoque y el tablero.
+========================================================= */
+
+.folder-system {
+  margin-top: 40px;
+}
+
+/* Pestanas superiores de la carpeta. */
+.folder-tabs {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: end;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: 0;
+  gap: 6px;
+}
+
+.folder-tab {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 10px 14px;
+  border: 2px solid var(--black);
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+  color: var(--black);
+  font-family: "Courier New", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  background: var(--soft-rose);
+  cursor: default;
+  transform: translateY(2px);
+}
+
+.folder-tab.active {
+  z-index: 2;
+  padding-top: 17px;
+  color: white;
+  background: var(--rose);
+}
+
+.folder-tab:nth-child(2) {
+  background: var(--blush);
+}
+
+.folder-tab:nth-child(3) {
+  background: var(--periwinkle);
+}
+
+.folder-tab:nth-child(4) {
+  background: var(--light-gray);
+}
+
+.folder-tab:nth-child(5) {
+  background: var(--rose);
+}
+
+.folder-tab:nth-child(6) {
+  background: var(--soft-periwinkle);
+}
+
+/* Caja grande que simula el cuerpo de una carpeta. */
+.folder-body {
+  position: relative;
+  padding: 38px;
+  border: 2px solid var(--black);
+  border-radius: 28px;
+  background: linear-gradient(180deg, var(--soft-rose), var(--blush));
+  box-shadow: 12px 12px 0 var(--shadow-medium);
+}
+
+/* Borde interior decorativo de la carpeta. */
+.folder-body::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+/* Sticker circular decorativo en la esquina. */
+.folder-body::after {
+  content: "";
+  position: absolute;
+  top: 22px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--black);
+  border-radius: 50%;
+  opacity: 0.9;
+  background: var(--cream);
+  box-shadow: 5px 5px 0 rgba(18, 18, 18, 0.18);
+}
+
+
+/* =========================================================
+  7. CURRENT FOCUS
+  Nota destacada antes del listado de casos.
+========================================================= */
+
+.focus-note {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.9fr 1.4fr;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 34px;
+  padding: 26px;
+  border: 2px solid var(--black);
+  border-radius: 20px;
+  background: rgba(255, 250, 246, 0.88);
+  box-shadow: 7px 7px 0 rgba(18, 18, 18, 0.18);
+}
+
+.focus-note h2 {
+  margin: 6px 0 0;
+  font-family: Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.focus-note p:last-child {
+  margin: 0;
+  color: var(--dark-gray);
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+  8. TABLERO DE NOTAS
+  Grid de tarjetas con problemas, fixes y lecciones.
+========================================================= */
+
+.notes-board {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.dev-note {
+  position: relative;
+  min-height: auto;
+  padding: 20px;
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 var(--shadow-soft);
+  overflow: visible;
+}
+
+/* Lineas suaves dentro de cada nota, como papel rayado. */
+.dev-note::before {
+  content: "";
+  position: absolute;
+  inset: 78px 22px 22px;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 29px,
+    rgba(255, 255, 255, 0.35) 30px,
+    rgba(255, 255, 255, 0.35) 32px
+  );
+}
+
+.dev-note:nth-child(odd) {
+  transform: rotate(-0.7deg);
+}
+
+.dev-note:nth-child(even) {
+  transform: rotate(0.7deg);
+}
+
+/* Variantes de color para reutilizar en notas nuevas. */
+.note-rose {
+  background: var(--pink-note);
+}
+
+.note-blush {
+  background: var(--blush);
+}
+
+.note-periwinkle {
+  background: var(--soft-periwinkle);
+}
+
+.note-cream {
+  background: var(--soft-cream);
+}
+
+/* Cinta superior que parece pegar la nota al tablero. */
+.note-pin {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 76px;
+  height: 32px;
+  border: 1px solid rgba(18, 18, 18, 0.18);
+  background: rgba(255, 250, 246, 0.78);
+  box-shadow: 2px 2px 0 rgba(18, 18, 18, 0.12);
+  transform: translateX(-50%) rotate(2deg);
+}
+
+/* Mantiene el texto encima de las lineas decorativas. */
+.note-header,
+.note-footer,
+.note-lines,
+.dev-note h3 {
+  position: relative;
+  z-index: 1;
+}
+
+.note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.note-category {
+  padding: 5px 10px;
+  border-radius: 3px;
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(18, 18, 18, 0.9);
+}
+
+.dev-note h3 {
+  margin: 16px 0 24px;
+  font-family: Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.note-lines {
+  display: grid;
+  gap: 14px;
+}
+
+.note-lines p {
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+.note-lines strong {
+  font-weight: 900;
+}
+
+.note-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.note-footer span {
+  padding: 5px 9px;
+  border: 1px solid rgba(18, 18, 18, 0.2);
+  font-size: 0.72rem;
+  background: rgba(255, 250, 246, 0.65);
+}
+
+
+/* =========================================================
+  9. SNIPPET NOTEBOOK
+  Libreta inferior para guardar fragmentos de codigo.
+========================================================= */
+
+.snippet-notebook {
+  position: relative;
+  margin-top: 70px;
+  padding-left: 0;
+  overflow: visible;
+}
+
+.notebook-page {
+  position: relative;
+  z-index: 2;
+  padding: 42px 42px 42px 86px;
+  border: 2px solid var(--black);
+  border-radius: 18px;
+  background-color: var(--soft-cream);
+  box-shadow: 10px 10px 0 rgba(18, 18, 18, 0.18);
+  overflow: hidden;
+}
+
+/* Cuadricula suave del papel de libreta. */
+.notebook-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  background-image:
+    linear-gradient(rgba(201, 203, 219, 0.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 203, 219, 0.28) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* Linea vertical rosada del margen de la libreta. */
+.notebook-page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 58px;
+  width: 2px;
+  background: rgba(220, 137, 170, 0.55);
+}
+
+/* Agujeros de la libreta. */
+.notebook-holes {
+  position: absolute;
+  top: 42px;
+  bottom: 42px;
+  left: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+}
+
+.notebook-holes span {
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(18, 18, 18, 0.12);
+  border-radius: 50%;
+  background: var(--paper-hole);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* El contenido real queda encima de la cuadricula decorativa. */
+.snippet-notebook .section-label,
+.snippet-header,
+.snippet-paper {
+  position: relative;
+  z-index: 1;
+}
+
+.snippet-header {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: end;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.snippet-header h2 {
+  margin: 8px 0 0;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.snippet-header p {
+  margin: 0;
+  color: var(--dark-gray);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.snippet-paper {
+  padding: 24px;
+  border: 2px solid var(--black);
+  border-radius: 14px;
+  background: rgba(255, 250, 246, 0.7);
+  box-shadow: 6px 6px 0 rgba(18, 18, 18, 0.12);
+}
+
+.snippet-paper-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.snippet-paper-top p {
+  margin: 0;
+  color: var(--black);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.snippet-paper-top span {
+  padding: 6px 12px;
+  border: 1px solid rgba(18, 18, 18, 0.18);
+  color: white;
+  font-size: 0.72rem;
+  background: var(--rose);
+}
+
+.snippet-paper pre {
+  margin: 0;
+  padding: 18px;
+  border-radius: 10px;
+  color: var(--soft-cream);
+  background: #111111;
+  overflow-x: auto;
+}
+
+.snippet-paper code {
+  font-family: "Courier New", monospace;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+  10. RESPONSIVE
+  Ajustes para pantallas pequenas y celulares.
+========================================================= */
+
+@media (max-width: 820px) {
+  .page-wrapper {
+    width: min(88%, 1080px);
+    padding: 32px 0 48px;
+  }
+
+  .site-hero {
+    margin-bottom: 46px;
+  }
+
+  .hero-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+  }
+
+  .main-title {
+    max-width: 100%;
+    font-size: clamp(3.1rem, 18vw, 4.6rem);
+    line-height: 0.78;
+    letter-spacing: -0.07em;
+  }
+
+  .main-title::after {
+    top: auto;
+    right: auto;
+    bottom: -28px;
+    left: 48%;
+    padding: 5px 12px;
+    font-size: 0.62rem;
+    white-space: nowrap;
+    box-shadow: 2px 2px 0 var(--black);
+    transform: translateX(-50%) rotate(-2deg);
+  }
+
+  .hero-description {
+    max-width: 85%;
+    margin-top: 38px;
+    font-size: 0.82rem;
+    line-height: 1.65;
+  }
+
+  .folder-system {
+    margin-top: 28px;
+  }
+
+  /* Las pestanas quedan en una sola fila con scroll horizontal. */
+  .folder-tabs {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 4px;
+    gap: 5px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .folder-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .folder-tab {
+    flex: 0 0 92px;
+    width: 92px;
+    min-width: 92px;
+    max-width: 92px;
+    padding: 9px 6px 10px;
+    border-radius: 14px 14px 0 0;
+    font-size: 0.58rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .folder-tab.active {
+    padding-top: 11px;
+  }
+
+  .folder-body {
+    padding: 14px;
+    border-radius: 22px;
+    box-shadow: 6px 6px 0 rgba(18, 18, 18, 0.2);
+  }
+
+  .folder-body::before {
+    inset: 8px;
+    border-radius: 16px;
+  }
+
+  .folder-body::after {
+    display: none;
+  }
+
+  .focus-note {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 0 var(--shadow-soft);
+  }
+
+  .focus-note .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+  }
+
+  .focus-note h2 {
+    font-size: clamp(2.15rem, 10.5vw, 3rem);
+    line-height: 0.88;
+  }
+
+  .focus-note p:last-child {
+    font-size: 0.78rem;
+    line-height: 1.65;
+  }
+
+  .notes-board {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .dev-note {
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 5px 5px 0 var(--shadow-soft);
+  }
+
+  .dev-note h3 {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    line-height: 0.92;
+  }
+
+  .note-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .note-lines p {
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+
+  .note-category,
+  .note-footer span {
+    font-size: 0.62rem;
+  }
+
+  .snippet-notebook {
+    margin-top: 48px;
+    padding-left: 0;
+  }
+
+  .notebook-page {
+    padding: 26px 18px 26px 54px;
+  }
+
+  .notebook-page::after {
+    left: 40px;
+  }
+
+  .notebook-holes {
+    top: 42px;
+    bottom: 42px;
+    left: 20px;
+  }
+
+  .notebook-holes span {
+    border-color: rgba(18, 18, 18, 0.1);
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .snippet-header {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .snippet-header h2 {
+    font-size: clamp(1.8rem, 10vw, 2.7rem);
+  }
+
+  .snippet-header p {
+    font-size: 0.8rem;
+    line-height: 1.65;
+  }
+
+  .snippet-paper {
+    padding: 18px;
+  }
+
+  .snippet-paper-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .snippet-paper-top p {
+    font-size: 1rem;
+  }
+
+  .snippet-paper code {
+    font-size: 0.74rem;
+  }
+
+  .doodle-star {
+    top: 18%;
+    right: 8%;
+    font-size: 2.2rem;
+  }
+
+  .doodle-sparkle {
+    top: 43%;
+    left: 2%;
+    font-size: 2.2rem;
+  }
+
+  .doodle-heart {
+    top: 31%;
+    right: -4%;
+    display: block;
+    font-size: 2.4rem;
+  }
+
+  .doodle-loop {
+    bottom: 28%;
+    left: -6%;
+    font-size: 3rem;
+  }
+
+  .doodle-plus {
+    right: 7%;
+    bottom: 15%;
+    font-size: 2rem;
+  }
+
+  .doodle-flower {
+    top: 68%;
+    right: -3%;
+    display: block;
+    font-size: 2.1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-wrapper {
+    width: min(94%, 1080px);
+    padding: 36px 0 56px;
+  }
+
+  .main-title {
+    font-size: clamp(3.4rem, 22vw, 5.2rem);
+  }
+
+  .folder-body {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .focus-note,
+  .dev-note {
+    padding: 22px;
+  }
+
+  .doodle-heart,
+  .doodle-flower {
+    display: none;
+  }
+}

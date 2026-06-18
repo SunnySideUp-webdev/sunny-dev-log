@@ -1,0 +1,417 @@
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <!--
+    =========================================================
+      HEAD
+      Configuración inicial de la página.
+
+      Aquí se define:
+      - El tipo de caracteres que usa el documento.
+      - La escala responsive para celulares.
+      - El título que aparece en la pestaña del navegador.
+      - La conexión con el archivo CSS.
+    =========================================================
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sunny Dev Log</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!--
+    =========================================================
+      1. FONDO DECORATIVO
+      Doodles visuales que flotan detrás del contenido.
+
+      aria-hidden="true" indica que estos elementos son solo
+      decorativos y no necesitan ser leídos por lectores de pantalla.
+    =========================================================
+    -->
+    <div class="background-doodles" aria-hidden="true">
+      <span class="doodle doodle-star">✦</span>
+      <span class="doodle doodle-sparkle">✧</span>
+      <span class="doodle doodle-heart">♡</span>
+      <span class="doodle doodle-loop">꩜</span>
+      <span class="doodle doodle-plus">+</span>
+      <span class="doodle doodle-flower">✿</span>
+    </div>
+
+    <!--
+    =========================================================
+      2. CONTENEDOR PRINCIPAL
+      Envuelve todo el contenido visible de la página.
+
+      La clase page-wrapper ayuda a controlar:
+      - El ancho máximo del sitio.
+      - El centrado del contenido.
+      - El espacio superior e inferior.
+    =========================================================
+    -->
+    <main class="page-wrapper">
+      <!--
+      =========================================================
+        3. HERO / TÍTULO PRINCIPAL
+        Primera sección visible del sitio.
+
+        Sirve para presentar:
+        - El tipo de proyecto.
+        - El nombre "Sunny Dev Log".
+        - Una descripción corta de la bitácora.
+      =========================================================
+      -->
+      <header class="site-hero">
+        <p class="hero-label">personal debug journal</p>
+
+        <h1 class="main-title">
+          <span>Sunny</span>
+          <span>Dev Log</span>
+        </h1>
+
+        <p class="hero-description">
+          Bugs, fixes, snippets and little victories from my web development
+          journey.
+        </p>
+      </header>
+
+      <!--
+      =========================================================
+        4. SISTEMA DE CARPETA
+        Sección principal donde viven las notas de debugging.
+
+        Visualmente funciona como una carpeta con pestañas.
+        Dentro se muestran:
+        - Categorías.
+        - Current focus.
+        - Board de notas.
+      =========================================================
+      -->
+      <section class="folder-system">
+        <!--
+        =========================================================
+          4.1 PESTAÑAS DE CATEGORÍAS
+          Menú visual de categorías.
+
+          En la V1 son solo decorativas/estáticas.
+          En la V2 podrán funcionar con JavaScript para filtrar notas.
+        =========================================================
+        -->
+        <nav class="folder-tabs" aria-label="Dev log categories">
+          <button class="folder-tab active">All</button>
+          <button class="folder-tab">WP</button>
+          <button class="folder-tab">Forms</button>
+          <button class="folder-tab">JS</button>
+          <button class="folder-tab">CSS</button>
+          <button class="folder-tab">QA</button>
+        </nav>
+
+        <!--
+        =========================================================
+          4.2 CUERPO DE LA CARPETA
+          Contenedor rosado principal.
+
+          Aquí se coloca la información interna de la carpeta:
+          - El bloque de enfoque actual.
+          - Las notas tipo memo.
+        =========================================================
+        -->
+        <div class="folder-body">
+          <!--
+          =========================================================
+            4.3 CURRENT FOCUS
+            Bloque introductorio dentro de la carpeta.
+
+            Explica el propósito de la bitácora:
+            convertir errores, bugs y problemas técnicos en notas útiles.
+          =========================================================
+          -->
+          <section class="focus-note">
+            <div>
+              <p class="section-label">current focus</p>
+              <h2>Turning mistakes into notes.</h2>
+            </div>
+
+            <p>
+              Every note keeps track of what broke, how I fixed it and what I
+              want to remember next time.
+            </p>
+          </section>
+
+          <!--
+          =========================================================
+            4.4 BOARD DE NOTAS
+            Grid donde viven todos los casos documentados.
+
+            Cada article.dev-note representa un caso técnico:
+            - Problema.
+            - Fix o solución.
+            - Lección aprendida.
+            - Tags.
+          =========================================================
+          -->
+          <section class="notes-board" aria-label="Debug notes board">
+            <!--
+            =========================================================
+              NOTA 001
+              Primer caso real documentado.
+
+              Para agregar nuevas notas:
+              copia un article completo, cambia el número, categoría,
+              título, problema, fix, lección y tags.
+            =========================================================
+            -->
+            <article class="dev-note note-rose">
+              <div class="note-pin"></div>
+
+              <header class="note-header">
+                <p class="case-number">Caso 001</p>
+                <span class="note-category">WordPress</span>
+              </header>
+
+              <h3>Comillas en WordPress</h3>
+
+              <div class="note-lines">
+                <p>
+                  <strong>Problema:</strong>
+                  Un fragmento no funcionaba por el tipo de comillas usado,
+                  WordPress o el texto pegado podía tener comillas curvas en
+                  lugar de comillas normales.
+                </p>
+
+                <p>
+                  <strong>Fix:</strong>
+                  En código revisar si estoy usando <code>" "</code> o
+                  <code>' '</code> normales, no <code>“ ”</code> o
+                  <code>’</code>.
+                </p>
+
+                <p>
+                  <strong>Lección:</strong>
+                  Pegar primero en VS Code. Buscar comillas raras. Reemplazar
+                  manualmente. Probar de nuevo en WordPress.
+                </p>
+              </div>
+
+              <footer class="note-footer">
+                <span>debug</span>
+                <span>strings</span>
+              </footer>
+            </article>
+
+            <!--
+            =========================================================
+              NOTA 002
+              Ejemplo de caso para Gravity Forms.
+
+              Puedes reemplazar este contenido con un caso real
+              cuando tengas otro aprendizaje documentado.
+            =========================================================
+            -->
+            <article class="dev-note note-blush">
+              <div class="note-pin"></div>
+
+              <header class="note-header">
+                <p class="case-number">Case 002</p>
+                <span class="note-category">Gravity Forms</span>
+              </header>
+
+              <h3>Hidden field not updating</h3>
+
+              <div class="note-lines">
+                <p>
+                  <strong>Problem:</strong>
+                  A hidden field value was not changing on the form.
+                </p>
+
+                <p>
+                  <strong>Fix:</strong>
+                  Used jQuery after the Gravity Form finished rendering.
+                </p>
+
+                <p>
+                  <strong>Lesson:</strong>
+                  Some scripts need to wait for the correct form event.
+                </p>
+              </div>
+
+              <footer class="note-footer">
+                <span>forms</span>
+                <span>jQuery</span>
+              </footer>
+            </article>
+
+            <!--
+            =========================================================
+              NOTA 003
+              Ejemplo de caso para CSS responsive.
+
+              Sirve para documentar problemas visuales,
+              layouts rotos o errores en mobile.
+            =========================================================
+            -->
+            <article class="dev-note note-periwinkle">
+              <div class="note-pin"></div>
+
+              <header class="note-header">
+                <p class="case-number">Case 003</p>
+                <span class="note-category">CSS</span>
+              </header>
+
+              <h3>Cards breaking on mobile</h3>
+
+              <div class="note-lines">
+                <p>
+                  <strong>Problem:</strong>
+                  Cards were overflowing outside the container on small screens.
+                </p>
+
+                <p>
+                  <strong>Fix:</strong>
+                  Replaced fixed widths with max-width and flex-wrap.
+                </p>
+
+                <p>
+                  <strong>Lesson:</strong>
+                  Avoid rigid layouts when building responsive sections.
+                </p>
+              </div>
+
+              <footer class="note-footer">
+                <span>responsive</span>
+                <span>layout</span>
+              </footer>
+            </article>
+
+            <!--
+            =========================================================
+              NOTA 004
+              Ejemplo de caso para JavaScript.
+
+              Puede usarse para documentar lógica de horarios,
+              hidden fields, validaciones o interacción con forms.
+            =========================================================
+            -->
+            <article class="dev-note note-cream">
+              <div class="note-pin"></div>
+
+              <header class="note-header">
+                <p class="case-number">Case 004</p>
+                <span class="note-category">JavaScript</span>
+              </header>
+
+              <h3>Emergency field logic</h3>
+
+              <div class="note-lines">
+                <p>
+                  <strong>Problem:</strong>
+                  A field needed to show only during a specific schedule.
+                </p>
+
+                <p>
+                  <strong>Fix:</strong>
+                  Checked current time and updated the hidden field value.
+                </p>
+
+                <p>
+                  <strong>Lesson:</strong>
+                  Time-based logic needs clear timezone handling.
+                </p>
+              </div>
+
+              <footer class="note-footer">
+                <span>time logic</span>
+                <span>forms</span>
+              </footer>
+            </article>
+          </section>
+        </div>
+      </section>
+
+      <!--
+      =========================================================
+        5. SNIPPET NOTEBOOK
+        Sección para guardar fragmentos de código reutilizables.
+
+        Visualmente funciona como una hoja de cuaderno:
+        - Tiene agujeros.
+        - Tiene margen.
+        - Tiene cuadrícula.
+        - Guarda snippets útiles para futuros problemas.
+      =========================================================
+      -->
+      <section class="snippet-notebook">
+        <!--
+        =========================================================
+          5.1 HOJA DEL CUADERNO
+          Contenedor principal del área de snippets.
+
+          Aquí se encuentra:
+          - La decoración de agujeros.
+          - El título de la sección.
+          - La descripción.
+          - Las tarjetas de código.
+        =========================================================
+        -->
+        <div class="notebook-page">
+          <!--
+          =========================================================
+            5.2 AGUJEROS DECORATIVOS
+            Simulan una hoja de cuaderno universitario.
+
+            aria-hidden="true" porque son solo decoración.
+          =========================================================
+          -->
+          <div class="notebook-holes" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <p class="section-label">snippet notebook</p>
+
+          <!--
+          =========================================================
+            5.3 ENCABEZADO DEL NOTEBOOK
+            Explica para qué sirve esta sección.
+
+            Aquí puedes guardar selectores, patrones,
+            fragmentos de código o soluciones repetibles.
+          =========================================================
+          -->
+          <div class="snippet-header">
+            <h2>Little code pieces I want to reuse.</h2>
+            <p>
+              Small snippets, selectors and patterns that can help me solve
+              similar problems faster.
+            </p>
+          </div>
+
+          <!--
+          =========================================================
+            5.4 SNIPPET CARD
+            Tarjeta individual para un fragmento de código.
+
+            Puedes copiar este article para agregar más snippets.
+          =========================================================
+          -->
+          <article class="snippet-paper">
+            <div class="snippet-paper-top">
+              <p>Check selected value</p>
+              <span>JavaScript</span>
+            </div>
+
+            <pre><code>const selectedValue = document.querySelector("#field-id").value;</code></pre>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+```
