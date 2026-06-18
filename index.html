@@ -45,11 +45,6 @@
     =========================================================
       2. CONTENEDOR PRINCIPAL
       Envuelve todo el contenido visible de la página.
-
-      La clase page-wrapper ayuda a controlar:
-      - El ancho máximo del sitio.
-      - El centrado del contenido.
-      - El espacio superior e inferior.
     =========================================================
     -->
     <main class="page-wrapper">
@@ -57,11 +52,6 @@
       =========================================================
         3. HERO / TÍTULO PRINCIPAL
         Primera sección visible del sitio.
-
-        Sirve para presentar:
-        - El tipo de proyecto.
-        - El nombre "Sunny Dev Log".
-        - Una descripción corta de la bitácora.
       =========================================================
       -->
       <header class="site-hero">
@@ -88,6 +78,7 @@
         - Categorías.
         - Current focus.
         - Board de notas.
+        - Paginación de notas.
       =========================================================
       -->
       <section class="folder-system" data-active-category="all">
@@ -96,8 +87,7 @@
           4.1 PESTAÑAS DE CATEGORÍAS
           Menú visual de categorías.
 
-          En la V1 son solo decorativas/estáticas.
-          En la V2 podrán funcionar con JavaScript para filtrar notas.
+          En V2 funcionan con JavaScript para filtrar notas.
         =========================================================
         -->
         <nav class="folder-tabs" aria-label="Dev log categories">
@@ -112,11 +102,12 @@
         <!--
         =========================================================
           4.2 CUERPO DE LA CARPETA
-          Contenedor rosado principal.
+          Contenedor principal de las notas.
 
-          Aquí se coloca la información interna de la carpeta:
-          - El bloque de enfoque actual.
-          - Las notas tipo memo.
+          Aquí viven:
+          - El current focus.
+          - El board renderizado por JavaScript.
+          - Las flechas de paginación.
         =========================================================
         -->
         <div class="folder-body">
@@ -124,9 +115,6 @@
           =========================================================
             4.3 CURRENT FOCUS
             Bloque introductorio dentro de la carpeta.
-
-            Explica el propósito de la bitácora:
-            convertir errores, bugs y problemas técnicos en notas útiles.
           =========================================================
           -->
           <section class="focus-note">
@@ -144,16 +132,33 @@
           <!--
           =========================================================
             4.4 BOARD DE NOTAS
-            Grid donde viven todos los casos documentados.
+            Aquí JavaScript dibuja las notas desde notes.js.
 
-            Cada article.dev-note representa un caso técnico:
-            - Problema.
-            - Fix o solución.
-            - Lección aprendida.
-            - Tags.
+            Importante:
+            Este section debe quedar vacío en el HTML porque las notas
+            se generan dinámicamente desde script.js.
           =========================================================
           -->
           <section class="notes-board" aria-label="Debug notes board"></section>
+
+          <!--
+          =========================================================
+            4.5 PAGINACIÓN DE NOTAS
+            Controles para mostrar las notas de 4 en 4.
+
+            JavaScript actualiza:
+            - El número de página.
+            - El estado disabled de los botones.
+            - Las notas visibles.
+          =========================================================
+          -->
+          <div class="notes-pagination">
+            <button class="pagination-btn" id="prevPage">← previous</button>
+            <span class="pagination-info" id="paginationInfo">Page 1 of 1</span>
+            <button class="pagination-btn" id="nextPage">next →</button>
+          </div>
+        </div>
+      </section>
 
       <!--
       =========================================================
@@ -172,12 +177,6 @@
         =========================================================
           5.1 HOJA DEL CUADERNO
           Contenedor principal del área de snippets.
-
-          Aquí se encuentra:
-          - La decoración de agujeros.
-          - El título de la sección.
-          - La descripción.
-          - Las tarjetas de código.
         =========================================================
         -->
         <div class="notebook-page">
@@ -204,9 +203,6 @@
           =========================================================
             5.3 ENCABEZADO DEL NOTEBOOK
             Explica para qué sirve esta sección.
-
-            Aquí puedes guardar selectores, patrones,
-            fragmentos de código o soluciones repetibles.
           =========================================================
           -->
           <div class="snippet-header">
@@ -236,6 +232,17 @@
         </div>
       </section>
     </main>
+
+    <!--
+    =========================================================
+      6. SCRIPTS
+      Conexión con los archivos JavaScript.
+
+      El orden es importante:
+      1. notes.js carga el array de notas.
+      2. script.js usa ese array para renderizar y filtrar.
+    =========================================================
+    -->
     <script src="notes.js"></script>
     <script src="script.js"></script>
   </body>
