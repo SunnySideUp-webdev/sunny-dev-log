@@ -5,28 +5,76 @@ const folderTabs = document.querySelectorAll(".folder-tab");
 const prevPageButton = document.querySelector("#prevPage");
 const nextPageButton = document.querySelector("#nextPage");
 const paginationInfo = document.querySelector("#paginationInfo");
+const notesCounter = document.querySelector("#notesCounter");
+const notesSearch = document.querySelector("#notesSearch");
+const snippetsList = document.querySelector(".snippets-list");
 
 const noteColors = ["note-rose", "note-blush", "note-periwinkle", "note-cream"];
 
 const notesPerPage = 4;
 let currentPage = 1;
 let currentCategory = "all";
+let currentSearch = "";
+
+function updateNotesCounter(totalNotes) {
+  const noteWord = totalNotes === 1 ? "note" : "notes";
+
+  notesCounter.textContent = `${totalNotes} ${noteWord} saved in this folder`;
+}
+
+function renderSnippets() {
+  snippetsList.innerHTML = snippets
+    .map((snippet) => {
+      return `
+        <article class="snippet-paper">
+          <div class="snippet-paper-top">
+            <div>
+              <p>${snippet.title}</p>
+              <small>${snippet.description}</small>
+            </div>
+
+            <span>${snippet.language}</span>
+          </div>
+
+          <pre><code>${snippet.code}</code></pre>
+        </article>
+      `;
+    })
+    .join("");
+}
 
 function renderNotes(category = "all") {
   currentCategory = category;
 
-  const filteredNotes =
+  const categoryNotes =
     category === "all"
       ? notes
       : notes.filter((note) => note.category === category);
 
+  const filteredNotes = categoryNotes.filter((note) => {
+    const searchText = currentSearch.toLowerCase();
+
+    const noteContent = `
+      ${note.title}
+      ${note.problem}
+      ${note.fix}
+      ${note.lesson}
+      ${note.categoryLabel}
+      ${note.tags.join(" ")}
+    `.toLowerCase();
+
+    return noteContent.includes(searchText);
+  });
+
+  updateNotesCounter(filteredNotes.length);
+
   if (filteredNotes.length === 0) {
     notesBoard.innerHTML = `
       <article class="empty-note">
-        <p class="case-number">No notes yet</p>
-        <h3>This folder is waiting for its first little lesson.</h3>
+        <p class="case-number">No notes found</p>
+        <h3>This folder has no notes matching your search.</h3>
         <p>
-          Add a new note in <code>notes.js</code> when you solve something related to this category.
+          Try another word, tag or category.
         </p>
       </article>
     `;
@@ -123,4 +171,11 @@ nextPageButton.addEventListener("click", () => {
   renderNotes(currentCategory);
 });
 
+notesSearch.addEventListener("input", () => {
+  currentSearch = notesSearch.value;
+  currentPage = 1;
+  renderNotes(currentCategory);
+});
+
 renderNotes();
+renderSnippets();

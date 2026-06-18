@@ -1,8 +1,9 @@
 ```html
 <!doctype html>
 <html lang="en">
-  <head>
-    <!--
+
+<head>
+  <!--
     =========================================================
       HEAD
       Configuración inicial de la página.
@@ -14,16 +15,16 @@
       - La conexión con el archivo CSS.
     =========================================================
     -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Sunny Dev Log</title>
+  <title>Sunny Dev Log</title>
 
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-  <body>
-    <!--
+<body>
+  <!--
     =========================================================
       1. FONDO DECORATIVO
       Doodles visuales que flotan detrás del contenido.
@@ -32,43 +33,43 @@
       decorativos y no necesitan ser leídos por lectores de pantalla.
     =========================================================
     -->
-    <div class="background-doodles" aria-hidden="true">
-      <span class="doodle doodle-star">✦</span>
-      <span class="doodle doodle-sparkle">✧</span>
-      <span class="doodle doodle-heart">♡</span>
-      <span class="doodle doodle-loop">꩜</span>
-      <span class="doodle doodle-plus">+</span>
-      <span class="doodle doodle-flower">✿</span>
-    </div>
+  <div class="background-doodles" aria-hidden="true">
+    <span class="doodle doodle-star">✦</span>
+    <span class="doodle doodle-sparkle">✧</span>
+    <span class="doodle doodle-heart">♡</span>
+    <span class="doodle doodle-loop">꩜</span>
+    <span class="doodle doodle-plus">+</span>
+    <span class="doodle doodle-flower">✿</span>
+  </div>
 
-    <!--
+  <!--
     =========================================================
       2. CONTENEDOR PRINCIPAL
       Envuelve todo el contenido visible de la página.
     =========================================================
     -->
-    <main class="page-wrapper">
-      <!--
+  <main class="page-wrapper">
+    <!--
       =========================================================
         3. HERO / TÍTULO PRINCIPAL
         Primera sección visible del sitio.
       =========================================================
       -->
-      <header class="site-hero">
-        <p class="hero-label">personal debug journal</p>
+    <header class="site-hero">
+      <p class="hero-label">personal debug journal</p>
 
-        <h1 class="main-title">
-          <span>Sunny</span>
-          <span>Dev Log</span>
-        </h1>
+      <h1 class="main-title">
+        <span>Sunny</span>
+        <span>Dev Log</span>
+      </h1>
 
-        <p class="hero-description">
-          Bugs, fixes, snippets and little victories from my web development
-          journey.
-        </p>
-      </header>
+      <p class="hero-description">
+        Bugs, fixes, snippets and little victories from my web development
+        journey.
+      </p>
+    </header>
 
-      <!--
+    <!--
       =========================================================
         4. SISTEMA DE CARPETA
         Sección principal donde viven las notas de debugging.
@@ -81,8 +82,8 @@
         - Paginación de notas.
       =========================================================
       -->
-      <section class="folder-system" data-active-category="all">
-        <!--
+    <section class="folder-system" data-active-category="all">
+      <!--
         =========================================================
           4.1 PESTAÑAS DE CATEGORÍAS
           Menú visual de categorías.
@@ -90,16 +91,16 @@
           En V2 funcionan con JavaScript para filtrar notas.
         =========================================================
         -->
-        <nav class="folder-tabs" aria-label="Dev log categories">
-          <button class="folder-tab active" data-category="all">All</button>
-          <button class="folder-tab" data-category="wordpress">WP</button>
-          <button class="folder-tab" data-category="forms">Forms</button>
-          <button class="folder-tab" data-category="javascript">JS</button>
-          <button class="folder-tab" data-category="css">CSS</button>
-          <button class="folder-tab" data-category="qa">QA</button>
-        </nav>
+      <nav class="folder-tabs" aria-label="Dev log categories">
+        <button class="folder-tab active" data-category="all">All</button>
+        <button class="folder-tab" data-category="wordpress">WP</button>
+        <button class="folder-tab" data-category="forms">Forms</button>
+        <button class="folder-tab" data-category="javascript">JS</button>
+        <button class="folder-tab" data-category="css">CSS</button>
+        <button class="folder-tab" data-category="qa">QA</button>
+      </nav>
 
-        <!--
+      <!--
         =========================================================
           4.2 CUERPO DE LA CARPETA
           Contenedor principal de las notas.
@@ -110,26 +111,32 @@
           - Las flechas de paginación.
         =========================================================
         -->
-        <div class="folder-body">
-          <!--
+      <div class="folder-body">
+        <!--
           =========================================================
             4.3 CURRENT FOCUS
             Bloque introductorio dentro de la carpeta.
           =========================================================
           -->
-          <section class="focus-note">
-            <div>
-              <p class="section-label">current focus</p>
-              <h2>Turning mistakes into notes.</h2>
-            </div>
+        <section class="focus-note">
+          <div>
+            <p class="section-label">current focus</p>
+            <h2>Turning mistakes into notes.</h2>
+          </div>
 
+          <div class="focus-copy">
             <p>
               Every note keeps track of what broke, how I fixed it and what I
               want to remember next time.
             </p>
-          </section>
 
-          <!--
+            <p class="notes-counter" id="notesCounter">
+              0 notes saved in this folder
+            </p>
+          </div>
+        </section>
+
+        <!--
           =========================================================
             4.4 BOARD DE NOTAS
             Aquí JavaScript dibuja las notas desde notes.js.
@@ -139,9 +146,17 @@
             se generan dinámicamente desde script.js.
           =========================================================
           -->
-          <section class="notes-board" aria-label="Debug notes board"></section>
+        <div class="notes-toolbar">
+          <label class="search-label" for="notesSearch">search notes</label>
 
-          <!--
+          <input type="search" class="notes-search" id="notesSearch" placeholder="Search by title, fix, tag..." />
+        </div>
+
+        <section class="notes-board" aria-label="Debug notes board"></section>
+
+
+
+        <!--
           =========================================================
             4.5 PAGINACIÓN DE NOTAS
             Controles para mostrar las notas de 4 en 4.
@@ -152,15 +167,15 @@
             - Las notas visibles.
           =========================================================
           -->
-          <div class="notes-pagination">
-            <button class="pagination-btn" id="prevPage">← previous</button>
-            <span class="pagination-info" id="paginationInfo">Page 1 of 1</span>
-            <button class="pagination-btn" id="nextPage">next →</button>
-          </div>
+        <div class="notes-pagination">
+          <button class="pagination-btn" id="prevPage">← previous</button>
+          <span class="pagination-info" id="paginationInfo">Page 1 of 1</span>
+          <button class="pagination-btn" id="nextPage">next →</button>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!--
+    <!--
       =========================================================
         5. SNIPPET NOTEBOOK
         Sección para guardar fragmentos de código reutilizables.
@@ -172,15 +187,15 @@
         - Guarda snippets útiles para futuros problemas.
       =========================================================
       -->
-      <section class="snippet-notebook">
-        <!--
+    <section class="snippet-notebook">
+      <!--
         =========================================================
           5.1 HOJA DEL CUADERNO
           Contenedor principal del área de snippets.
         =========================================================
         -->
-        <div class="notebook-page">
-          <!--
+      <div class="notebook-page">
+        <!--
           =========================================================
             5.2 AGUJEROS DECORATIVOS
             Simulan una hoja de cuaderno universitario.
@@ -188,32 +203,32 @@
             aria-hidden="true" porque son solo decoración.
           =========================================================
           -->
-          <div class="notebook-holes" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+        <div class="notebook-holes" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
-          <p class="section-label">snippet notebook</p>
+        <p class="section-label">snippet notebook</p>
 
-          <!--
+        <!--
           =========================================================
             5.3 ENCABEZADO DEL NOTEBOOK
             Explica para qué sirve esta sección.
           =========================================================
           -->
-          <div class="snippet-header">
-            <h2>Little code pieces I want to reuse.</h2>
-            <p>
-              Small snippets, selectors and patterns that can help me solve
-              similar problems faster.
-            </p>
-          </div>
+        <div class="snippet-header">
+          <h2>Little code pieces I want to reuse.</h2>
+          <p>
+            Small snippets, selectors and patterns that can help me solve
+            similar problems faster.
+          </p>
+        </div>
 
-          <!--
+        <!--
           =========================================================
             5.4 SNIPPET CARD
             Tarjeta individual para un fragmento de código.
@@ -221,19 +236,12 @@
             Puedes copiar este article para agregar más snippets.
           =========================================================
           -->
-          <article class="snippet-paper">
-            <div class="snippet-paper-top">
-              <p>Check selected value</p>
-              <span>JavaScript</span>
-            </div>
+        <div class="snippets-list" aria-label="Reusable code snippets"></div>
+      </div>
+    </section>
+  </main>
 
-            <pre><code>const selectedValue = document.querySelector("#field-id").value;</code></pre>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <!--
+  <!--
     =========================================================
       6. SCRIPTS
       Conexión con los archivos JavaScript.
@@ -243,8 +251,10 @@
       2. script.js usa ese array para renderizar y filtrar.
     =========================================================
     -->
-    <script src="notes.js"></script>
-    <script src="script.js"></script>
-  </body>
+  <script src="notes.js"></script>
+  <script src="snippets.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>
 ```
