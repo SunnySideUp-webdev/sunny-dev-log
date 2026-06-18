@@ -1045,11 +1045,11 @@ body::before {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     align-items: flex-end;
-    width: calc(100% - 38px);
-    max-width: calc(100% - 38px);
+    width: min(86%, 520px);
+    max-width: 520px;
     margin: 0 auto;
     padding: 0;
-    gap: 5px;
+    gap: 4px;
     overflow-x: hidden;
     overflow-y: hidden;
     overscroll-behavior: none;
@@ -1065,9 +1065,9 @@ body::before {
     width: 100%;
     min-width: 0;
     max-width: none;
-    padding: 8px 4px 9px;
-    border-radius: 12px 12px 0 0;
-    font-size: 0.54rem;
+    padding: 5px 3px 6px;
+    border-radius: 9px 9px 0 0;
+    font-size: 0.46rem;
     overflow: hidden;
     text-overflow: ellipsis;
     user-select: none;
@@ -1078,7 +1078,7 @@ body::before {
   }
 
   .folder-tab.active {
-    padding-top: 9px;
+    padding-top: 6px;
   }
 
   .folder-body {
@@ -1343,16 +1343,16 @@ body::before {
   }
 
   .folder-tabs {
-    width: calc(100% - 32px);
-    max-width: calc(100% - 32px);
+    width: min(88%, 340px);
+    max-width: 340px;
     padding: 0;
-    gap: 5px;
+    gap: 3px;
   }
 
   .folder-tab {
-    padding: 7px 3px 8px;
-    border-radius: 11px 11px 0 0;
-    font-size: 0.5rem;
+    padding: 4px 2px 5px;
+    border-radius: 8px 8px 0 0;
+    font-size: 0.42rem;
   }
 
   .folder-body {
