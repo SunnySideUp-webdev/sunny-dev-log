@@ -1,4 +1,3 @@
-````md
 # Sunny Dev Log
 
 Sunny Dev Log is a personal web app created to document debugging notes, reusable code snippets and programming lessons.
@@ -43,7 +42,6 @@ Instead of keeping fixes scattered in chats, notes or memory, Sunny Dev Log orga
 
 ## Project Structure
 
-```txt
 sunny-dev-log/
 ├── index.html
 ├── styles.css
@@ -51,7 +49,6 @@ sunny-dev-log/
 ├── snippets.js
 ├── script.js
 └── README.md
-````
 
 ## What I Practiced
 
@@ -87,6 +84,3 @@ Some future improvements could be:
 ## Author
 
 Built by Sunny Consuegra as part of my junior web development learning journey.
-
-```
-```
