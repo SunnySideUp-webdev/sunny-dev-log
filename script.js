@@ -9,6 +9,20 @@ function renderNotes(category = "all") {
       ? notes
       : notes.filter((note) => note.category === category);
 
+      if (filteredNotes.length === 0) {
+    notesBoard.innerHTML = `
+      <article class="empty-note">
+        <p class="case-number">No notes yet</p>
+        <h3>This folder is waiting for its first little lesson.</h3>
+        <p>
+          Add a new note in <code>notes.js</code> when you solve something related to this category.
+        </p>
+      </article>
+    `;
+
+    return;
+  }
+
   notesBoard.innerHTML = filteredNotes
     .map((note, index) => {
       return `
@@ -60,6 +74,7 @@ folderTabs.forEach((tab) => {
     folderSystem.dataset.activeCategory = selectedCategory;
 
     renderNotes(selectedCategory);
+    
   });
 });
 

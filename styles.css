@@ -941,3 +941,51 @@ body::before {
 .folder-system[data-active-category="qa"] .folder-body {
   background: linear-gradient(180deg, var(--soft-periwinkle), var(--light-gray));
 }
+
+.empty-note {
+  grid-column: 1 / -1;
+  position: relative;
+  min-height: 260px;
+  padding: 34px;
+  border: 2px dashed var(--black);
+  border-radius: 22px;
+  background: rgba(255, 250, 246, 0.72);
+  box-shadow: 7px 7px 0 rgba(18, 18, 18, 0.12);
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.empty-note::before {
+  content: "✦";
+  position: absolute;
+  top: 22px;
+  right: 26px;
+  font-family: Georgia, serif;
+  font-size: 2.4rem;
+  color: var(--rose);
+  opacity: 0.65;
+}
+
+.empty-note h3 {
+  margin: 10px auto 14px;
+  max-width: 520px;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.empty-note p:last-child {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--dark-gray);
+  line-height: 1.7;
+}
+
+.empty-note code {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--soft-periwinkle);
+  color: var(--black);
+}
