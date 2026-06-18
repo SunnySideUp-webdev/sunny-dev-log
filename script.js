@@ -217,6 +217,10 @@ folderTabs.forEach((tab) => {
     event.preventDefault();
   });
 
+  tab.addEventListener("touchmove", (event) => {
+    event.preventDefault();
+  }, { passive: false });
+
   tab.addEventListener("contextmenu", (event) => {
     event.preventDefault();
   });
