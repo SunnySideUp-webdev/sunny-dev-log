@@ -611,7 +611,7 @@ body::before {
 }
 
 .empty-note::before {
-  content: "âœ¦";
+  content: "\2726";
   position: absolute;
   top: 22px;
   right: 26px;
